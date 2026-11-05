@@ -1,13 +1,13 @@
 FROM docker.io/alpine:3 AS fetch-openssl
 WORKDIR /tmp/openssl
-ARG OPENSSL_VERSION="4.0.2"
-ADD --checksum=sha256:736b467530f916737b7031310ccb21d8218c6229e61e8e160cd1d3458cd543a8 https://github.com/openssl/openssl/releases/download/openssl-$OPENSSL_VERSION/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.tar.gz
+ARG OPENSSL_VERSION="4.1.0"
+ADD --checksum=sha256:50c17baf54cb008f6ce42d50deb4b28050a1aad711636cabd4b241c7e90cc2fd https://github.com/openssl/openssl/releases/download/openssl-$OPENSSL_VERSION/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.tar.gz
 RUN tar -xzvf /tmp/openssl.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS fetch-pcre
 WORKDIR /tmp/pcre
-ARG PCRE_VERSION="10.48"
-ADD --checksum=sha256:ebcc25aadf2a51fa1fefa9b8bc9e7a79b3dae86870a0f1152a22e42befd46888 https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$PCRE_VERSION/pcre2-$PCRE_VERSION.tar.gz /tmp/pcre.tar.gz
+ARG PCRE_VERSION="10.49"
+ADD --checksum=sha256:929f0b20e62879252a15886b06c89f1edef61a363cbd5826fb041080a5e557ae https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$PCRE_VERSION/pcre2-$PCRE_VERSION.tar.gz /tmp/pcre.tar.gz
 RUN tar -xzvf /tmp/pcre.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS fetch-zlib
@@ -23,7 +23,7 @@ RUN apk add \
       linux-headers \
       perl-dev
 WORKDIR /tmp/nginx
-ADD --checksum=sha256:974ed5298a5e398e008704ed5db284e655fc270c596493dbccada452448fc9f1 https://nginx.org/download/nginx-1.31.6.tar.gz /tmp/nginx.tar.gz
+ADD --checksum=sha256:0652b760b3b772d2ec17b47c2fc15d9a95e6fe35cd5b877eadc1a62d9bc75af1 https://nginx.org/download/nginx-1.31.8.tar.gz /tmp/nginx.tar.gz
 RUN tar -xzvf /tmp/nginx.tar.gz --strip-components=1
 COPY --from=fetch-openssl /tmp/openssl ./openssl
 COPY --from=fetch-pcre /tmp/pcre ./pcre

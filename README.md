@@ -9,6 +9,7 @@
 ## Features
 
 * Compiled from source during build time
+* Bundles OpenSSL 4.1.0, PCRE2 10.49, and zlib 1.3.2
 * Built `FROM scratch`, with zero bloat
 * Reduced attack surface (no shell, no UNIX tools, no package manager...)
 * Runs as unprivileged (non-`root`) user
@@ -20,13 +21,13 @@
 
 Available on Docker Hub as [`docker.io/ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/nginx):
 
-- [`1.31.6`, `latest` *(Dockerfile)*](Dockerfile)
+- [`1.31.8`, `latest` *(Dockerfile)*](Dockerfile)
 
 ### RedHat Quay
 
 Available on RedHat Quay as [`quay.io/ricardbejarano/nginx`](https://quay.io/repository/ricardbejarano/nginx):
 
-- [`1.31.6`, `latest` *(Dockerfile)*](Dockerfile)
+- [`1.31.8`, `latest` *(Dockerfile)*](Dockerfile)
 
 
 ## Configuration
